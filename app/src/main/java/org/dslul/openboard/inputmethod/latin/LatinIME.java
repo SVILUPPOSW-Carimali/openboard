@@ -2009,6 +2009,11 @@ public class LatinIME extends InputMethodService implements KeyboardActionListen
         return mSettings.getCurrent().isLanguageSwitchKeyEnabled();
     }
 
+    public boolean shouldShowSettingsKey() {
+        return mSettings.getCurrent().isSettingsKeyEnabled();
+    }
+
+
     private void setNavigationBarVisibility(final boolean visible) {
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
             // For N and later, IMEs can specify Color.TRANSPARENT to make the navigation bar

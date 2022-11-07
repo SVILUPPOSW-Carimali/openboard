@@ -281,7 +281,7 @@ public final class KeyboardLayoutSet {
             // TODO: Consolidate those with {@link InputAttributes}.
             params.mEditorInfo = editorInfo;
             params.mIsPasswordField = InputTypeUtils.isPasswordInputType(editorInfo.inputType);
-            params.mNoSettingsKey = InputAttributes.inPrivateImeOptions(
+            params.mNoSettingsKey = params.mNoSettingsKey || InputAttributes.inPrivateImeOptions(
                     mPackageName, NO_SETTINGS_KEY, editorInfo);
 
             // When the device is still unlocked, features like showing the IME setting app need to
@@ -334,6 +334,11 @@ public final class KeyboardLayoutSet {
 
         public Builder setLanguageSwitchKeyEnabled(final boolean enabled) {
             mParams.mLanguageSwitchKeyEnabled = enabled;
+            return this;
+        }
+
+        public Builder setSettingsKeyEnabled(final boolean enabled) {
+            mParams.mNoSettingsKey = !enabled;
             return this;
         }
 

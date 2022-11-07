@@ -73,6 +73,7 @@ public class SettingsValues {
     public final boolean mShowsHints;
     public final boolean mSpaceForLangChange;
     public final boolean mShowsLanguageSwitchKey;
+    public final boolean mShowsSettingsKey;
     public final boolean mShowsEmojiKey;
     public final boolean mShowsClipboardKey;
     public final boolean mUsePersonalizedDicts;
@@ -156,6 +157,7 @@ public class SettingsValues {
         mShowsHints = prefs.getBoolean(Settings.PREF_SHOW_HINTS, true);
         mSpaceForLangChange = prefs.getBoolean(Settings.PREF_SPACE_TO_CHANGE_LANG, true);
         mShowsLanguageSwitchKey = prefs.getBoolean(Settings.PREF_SHOW_LANGUAGE_SWITCH_KEY, false);
+        mShowsSettingsKey = prefs.getBoolean(Settings.PREF_SHOW_SETTINGS_KEY, false);
         mShowsEmojiKey = prefs.getBoolean(Settings.PREF_SHOW_EMOJI_KEY, false);
         mShowsClipboardKey = prefs.getBoolean(Settings.PREF_SHOW_CLIPBOARD_KEY, false);
         mUsePersonalizedDicts = prefs.getBoolean(Settings.PREF_KEY_USE_PERSONALIZED_DICTS, true);
@@ -302,6 +304,10 @@ public class SettingsValues {
         return imm.hasMultipleEnabledSubtypesInThisIme(false /* include aux subtypes */);
     }
 
+    public boolean isSettingsKeyEnabled() {
+        return  mShowsSettingsKey;
+    }
+
     public boolean isSameInputType(final EditorInfo editorInfo) {
         return mInputAttributes.isSameInputType(editorInfo);
     }
@@ -399,6 +405,8 @@ public class SettingsValues {
         sb.append("" + mIncludesOtherImesInLanguageSwitchList);
         sb.append("\n   mShowsLanguageSwitchKey = ");
         sb.append("" + mShowsLanguageSwitchKey);
+        sb.append("\n   mShowsSettingsKey = ");
+        sb.append("" + mShowsSettingsKey);
         sb.append("\n   mUsePersonalizedDicts = ");
         sb.append("" + mUsePersonalizedDicts);
         sb.append("\n   mUseDoubleSpacePeriod = ");
